@@ -353,7 +353,7 @@ Laboratory Reservation System/
 ├── docs/
 │   ├── architecture.svg         # 架构图
 │   ├── development.md           # 开发与构建说明（含受限环境处理）
-│   └── images/                  # 截图与录屏（待补充，见其中说明）
+│   └── images/                  # 界面截图（登录 / 首页 / 实验室详情 / AI / 审核）
 └── README.md
 ```
 
