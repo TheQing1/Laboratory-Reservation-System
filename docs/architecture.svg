@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="652" viewBox="0 0 1240 652"
+     font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Segoe UI',sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect width="1240" height="652" fill="#ffffff"/>
+  <text x="40" y="44" font-size="24" font-weight="700" fill="#0f172a">智能实验室预约系统 · 架构</text>
+  <text x="40" y="70" font-size="13" fill="#64748b">FastAPI + Vue3 + 自研 ReAct Agent（RAG · Tool Calling · SSE）· 预约槽位唯一约束保证并发互斥</text>
+
+  <!-- ===================== 前端 ===================== -->
+  <rect x="40" y="100" width="250" height="440" rx="12" fill="#eff6ff" stroke="#bfdbfe"/>
+  <text x="62" y="132" font-size="17" font-weight="700" fill="#1d4ed8">前端 Vue3</text>
+  <text x="62" y="164" font-size="13" fill="#1e3a8a">Vite 开发 / 构建</text>
+  <text x="62" y="192" font-size="13" fill="#1e3a8a">Vue Router + Pinia</text>
+  <text x="62" y="220" font-size="13" fill="#1e3a8a">Element Plus 组件库</text>
+  <text x="62" y="248" font-size="13" fill="#1e3a8a">ECharts 统计图表</text>
+  <text x="62" y="276" font-size="13" fill="#1e3a8a">markdown-it 渲染回答</text>
+  <text x="62" y="316" font-size="13" fill="#1d4ed8" font-weight="600">SSE 客户端（fetch）</text>
+  <text x="62" y="340" font-size="12" fill="#64748b">打字机输出 + 工具调用过程</text>
+  <text x="62" y="380" font-size="13" fill="#1e3a8a">14 个页面</text>
+  <text x="62" y="404" font-size="12" fill="#64748b">登录 · 首页图表 · 实验室详情</text>
+  <text x="62" y="424" font-size="12" fill="#64748b">预约 · 审核 · 设备 · 知识库</text>
+  <text x="62" y="444" font-size="12" fill="#64748b">用户管理 · AI 对话</text>
+  <text x="62" y="484" font-size="12" fill="#64748b">路由守卫：按角色控制入口</text>
+  <text x="62" y="508" font-size="12" fill="#64748b">axios 拦截器：统一解包响应</text>
+
+  <!-- 前端 -> 后端 -->
+  <line x1="290" y1="320" x2="336" y2="320" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="313" y="310" font-size="11" fill="#64748b" text-anchor="middle">HTTP</text>
+  <text x="313" y="340" font-size="11" fill="#64748b" text-anchor="middle">/ SSE</text>
+
+  <!-- ===================== 后端 ===================== -->
+  <rect x="340" y="100" width="580" height="440" rx="12" fill="#f8fafc" stroke="#e2e8f0"/>
+  <text x="362" y="132" font-size="17" font-weight="700" fill="#0f172a">后端 FastAPI</text>
+
+  <!-- 接口层 -->
+  <rect x="360" y="146" width="540" height="104" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="380" y="172" font-size="14" font-weight="700" fill="#0f172a">接口层 · 9 个路由模块</text>
+  <text x="380" y="196" font-size="12.5" fill="#334155">auth · users · labs · equipments · reservations</text>
+  <text x="380" y="216" font-size="12.5" fill="#334155">documents · chat · dashboard · upload</text>
+  <text x="380" y="238" font-size="12.5" fill="#334155">统一响应 {code, message, data} + 全局异常处理 + JWT 角色守卫</text>
+
+  <!-- 服务层 -->
+  <rect x="360" y="264" width="540" height="118" rx="10" fill="#ffffff" stroke="#cbd5e1"/>
+  <text x="380" y="290" font-size="14" font-weight="700" fill="#0f172a">服务层 · API 与 AI 共用</text>
+  <text x="380" y="314" font-size="12.5" fill="#334155">validate_reservation()：开放时间 · 时长 · 容量 · 冲突校验</text>
+  <text x="380" y="334" font-size="12.5" fill="#334155">occupy_slots() / release_slots()：30 分钟槽位占用与释放</text>
+  <text x="380" y="354" font-size="12.5" fill="#334155">free_slots() 空闲时段 · dashboard_stats() 统计</text>
+  <text x="380" y="374" font-size="12.5" fill="#b91c1c">↳ 唯一约束 (lab_id, booking_date, slot_minute) 兜底并发</text>
+
+  <!-- AI 子系统 -->
+  <rect x="360" y="396" width="540" height="130" rx="10" fill="#fdf4ff" stroke="#e9d5ff"/>
+  <text x="380" y="422" font-size="14" font-weight="700" fill="#7e22ce">AI 子系统</text>
+  <text x="380" y="446" font-size="12.5" fill="#4c1d95">agent.py：自研 ReAct 循环（≤5 轮），SSE 事件 tool_call / tool_result / delta</text>
+  <text x="380" y="466" font-size="12.5" fill="#4c1d95">tools.py：7 个业务工具（查实验室 · 设备 · 空闲 · 代提交预约 …）</text>
+  <text x="380" y="486" font-size="12.5" fill="#4c1d95">rag.py：向量余弦 + 中文二元组关键词重叠 0.45 / 0.55 加权</text>
+  <text x="380" y="506" font-size="12.5" fill="#4c1d95">embeddings.py：离线哈希向量（默认）/ 远端 embeddings · local_engine 离线兜底</text>
+
+  <!-- 后端 -> 数据层 -->
+  <line x1="920" y1="320" x2="966" y2="320" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="943" y="310" font-size="11" fill="#64748b" text-anchor="middle">SQL</text>
+  <text x="943" y="340" font-size="11" fill="#64748b" text-anchor="middle">Alchemy</text>
+
+  <!-- ===================== 数据层 ===================== -->
+  <rect x="970" y="100" width="230" height="440" rx="12" fill="#f0fdf4" stroke="#bbf7d0"/>
+  <text x="992" y="132" font-size="17" font-weight="700" fill="#15803d">数据层</text>
+  <text x="992" y="162" font-size="13" fill="#166534">SQLAlchemy 2.0 ORM</text>
+  <text x="992" y="192" font-size="13" font-weight="600" fill="#166534">9 张表</text>
+  <text x="992" y="216" font-size="12.5" fill="#166534">users · labs · equipments</text>
+  <text x="992" y="238" font-size="12.5" fill="#166534">reservations</text>
+  <text x="992" y="258" font-size="12.5" fill="#b91c1c">reservation_slots ★</text>
+  <text x="992" y="280" font-size="12.5" fill="#166534">lab_documents · doc_chunks</text>
+  <text x="992" y="302" font-size="12.5" fill="#166534">chat_sessions · chat_messages</text>
+  <text x="992" y="342" font-size="13" fill="#166534">SQLite（默认，WAL）</text>
+  <text x="992" y="366" font-size="13" fill="#166534">可切换 MySQL</text>
+  <text x="992" y="396" font-size="12.5" fill="#64748b">外键 + 级联删除</text>
+  <text x="992" y="420" font-size="12.5" fill="#64748b">槽位唯一约束：</text>
+  <text x="992" y="440" font-size="12" fill="#64748b">(lab_id, booking_date,</text>
+  <text x="992" y="458" font-size="12" fill="#64748b">slot_minute)</text>
+  <text x="992" y="494" font-size="12.5" fill="#64748b">启动时自动与</text>
+  <text x="992" y="512" font-size="12.5" fill="#64748b">现有预约对齐</text>
+
+  <!-- 底部强调 -->
+  <rect x="40" y="560" width="1160" height="64" rx="10" fill="#fef2f2" stroke="#fecaca"/>
+  <text x="62" y="588" font-size="14" font-weight="700" fill="#b91c1c">并发互斥：8 个请求同时抢同一时段 → 数据库唯一约束保证只有 1 单成功</text>
+  <text x="62" y="610" font-size="12.5" fill="#7f1d1d">原先“先查冲突、再插入”在并发下会双双通过校验；现在把判定下沉到 reservation_slots，取消 / 驳回 / 删除时释放槽位。</text>
+</svg>

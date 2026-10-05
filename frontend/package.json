@@ -1,0 +1,31 @@
+{
+  "name": "smart-lab-booking-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "智能实验室预约系统 - 前端（Vue3 + Vite + Element Plus）",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-no-esbuild.mjs",
+    "dev:standard": "vite",
+    "dev:sandbox": "node scripts/dev-no-esbuild.mjs",
+    "build": "node scripts/build.mjs",
+    "build:standard": "vite build",
+    "build:sandbox": "node scripts/build-no-esbuild.mjs",
+    "preview": "vite preview --port 5174"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "axios": "^1.7.7",
+    "echarts": "^5.5.1",
+    "element-plus": "^2.8.4",
+    "markdown-it": "^14.1.0",
+    "pinia": "^2.2.4",
+    "vue": "^3.4.38",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "sass": "^1.79.4",
+    "vite": "^5.4.8"
+  }
+}

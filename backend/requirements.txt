@@ -1,0 +1,18 @@
+# ===== 智能实验室预约系统 后端依赖 =====
+# 说明：本机环境已预装以下包。若使用全新环境，可直接 pip install -r requirements.txt
+fastapi==0.104.1
+uvicorn==0.24.0
+SQLAlchemy==2.0.35
+pydantic==2.5.2
+PyJWT==2.12.1
+bcrypt==4.2.0
+python-multipart==0.0.9
+openai==1.109.1
+httpx==0.25.2
+
+# 说明：数据库默认使用 SQLite（标准库 sqlite3，无需额外依赖）。
+# 如需 MySQL，请安装：pip install pymysql 并把 DATABASE_URL 改为 mysql+pymysql://...
+
+# 说明：AI 部分不需要 LangChain / LangGraph 即可运行。
+# 本项目用自研 ReAct 循环 + OpenAI 兼容 SDK 实现工具调用与流式输出，
+# 避免了重型依赖的版本冲突；RAG 使用内置确定性向量，完全离线可用。

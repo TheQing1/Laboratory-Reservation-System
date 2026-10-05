@@ -1,0 +1,33 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# ---- 运行时数据 ----
+backend/data/
+backend/uploads/
+*.db
+*.sqlite3
+
+# ---- 配置（含密钥，不要提交）----
+.env
+
+# ---- Node ----
+node_modules/
+frontend/dist/
+frontend/.npm-cache/
+.npm-cache/
+*.log
+npm-debug.log*
+
+# ---- 编辑器/系统 ----
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---- 调研笔记（非交付内容）----
+.notes/
