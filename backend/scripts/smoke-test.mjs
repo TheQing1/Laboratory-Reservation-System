@@ -91,6 +91,9 @@ function check(name, cond, detail = '') {
       await call('DELETE', `/reservations/${item.id}`, { token: adminToken });
     }
   }
+  // 记录当前已有的预约 id，测试结束后删除本次新增的记录（包含 AI 代提交的那条）
+  r = await call('GET', '/reservations?page_size=100', { token: adminToken });
+  const reservationsBefore = new Set((r.json?.data?.list || []).map((x) => x.id));
 
   // 取实验室当天的真实空闲时段，避免与演示数据撞车
   r = await call('GET', `/labs/3/availability?date=${tmr}`, { token: studentToken });
@@ -194,6 +197,9 @@ function check(name, cond, detail = '') {
   check('RAG 检索 GPU 说明', (r.json?.data || []).length > 0, JSON.stringify(r.json?.data).slice(0, 300));
 
   console.log('\n=== 8. AI 助手（本地引擎）===');
+  // 记录已有会话，测试结束后只删除本次新增的
+  r = await call('GET', '/chat/sessions', { token: studentToken });
+  const sessionsBefore = new Set((r.json?.data || []).map((s) => s.id));
   r = await call('POST', '/chat', { token: studentToken, body: { message: '有哪些实验室可以预约？' } });
   check('实验室咨询', r.json?.code === 200 && /实验室/.test(r.json?.data?.reply || ''),
     (r.json?.data?.reply || '').slice(0, 130));
@@ -297,6 +303,20 @@ function check(name, cond, detail = '') {
 
   r = await call('POST', '/reservations', { token: 'invalid.token.here', body: { lab_id: 1, booking_date: tmr, start_time: '09:00', end_time: '10:00' } });
   check('无效 token 被拦截', r.json?.code === 401, JSON.stringify(r.json).slice(0, 200));
+
+  // ---- 收尾：清理本次测试产生的预约与会话，保持演示数据干净 ----
+  r = await call('GET', '/reservations?page_size=100', { token: adminToken });
+  for (const item of r.json?.data?.list || []) {
+    if (!reservationsBefore.has(item.id)) {
+      await call('DELETE', `/reservations/${item.id}`, { token: adminToken });
+    }
+  }
+  r = await call('GET', '/chat/sessions', { token: studentToken });
+  for (const s of r.json?.data || []) {
+    if (!sessionsBefore.has(s.id)) {
+      await call('DELETE', `/chat/sessions/${s.id}`, { token: studentToken });
+    }
+  }
 
   console.log('\n' + '='.repeat(56));
   console.log(`结果：通过 ${pass} 项，失败 ${fail} 项`);

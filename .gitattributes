@@ -1,0 +1,13 @@
+# 统一换行符，避免 Windows 检出时产生大量 LF/CRLF 噪音
+* text=auto eol=lf
+
+# 二进制文件不做换行转换
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.docx binary
+*.xlsx binary
+*.pdf binary
