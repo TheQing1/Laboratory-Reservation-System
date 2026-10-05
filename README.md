@@ -61,8 +61,19 @@
 登录页 / 首页概览（ECharts 图表）/ 实验室卡片与详情（30 分钟粒度空闲时间轴）/
 预约申请 / 我的预约 / 预约审核 / 设备管理 / 知识库管理 / 用户管理 / 个人中心 / AI 对话页。
 
-> 📷 **截图与录屏**：拍摄清单见 [`docs/images/README.md`](docs/images/README.md)
-> （登录、首页图表、实验室详情时间轴、AI“过程可见”、预约审核 5 个界面最值得展示）。
+| 登录 | 首页概览 |
+|------|----------|
+| ![登录](docs/images/01-login.png) | ![首页概览](docs/images/02-dashboard.png) |
+
+| 实验室详情 · 30 分钟空闲时间轴 | AI 助手 · 工具调用过程可见 |
+|------|----------|
+| ![实验室详情](docs/images/03-lab-detail.png) | ![AI 助手过程可见](docs/images/04-ai-agent.png) |
+
+| 预约审核 | |
+|------|------|
+| ![预约审核](docs/images/05-review.png) | |
+
+> 重新截图或替换素材的方法见 [`docs/images/README.md`](docs/images/README.md)。
 
 ---
 

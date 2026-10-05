@@ -345,8 +345,10 @@ async function send(text, isRegenerate = false) {
   }
   input.value = ''
 
-  const assistant = { role: 'assistant', content: '', steps: [], streaming: true }
-  messages.value.push(assistant)
+  messages.value.push({ role: 'assistant', content: '', steps: [], streaming: true })
+  // 注意：必须从数组里取回「响应式代理」再修改。
+  // 直接改 push 进去的原始对象不会触发 Vue 更新（表现为一直显示“正在输入”）。
+  const assistant = messages.value[messages.value.length - 1]
   streaming.value = true
   scrollToBottom()
 
